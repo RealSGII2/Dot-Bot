@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace DotBot.Server
 {
-    public class EXPManager
+    public class DataManager
     {
         public static readonly uint[] levelRequirements = new uint[121];
         private DiscordSocketClient _client;
 
-        public EXPManager(DiscordSocketClient client)
+        public DataManager(DiscordSocketClient client)
         {
             _client = client;
             uint lastLevelReq = 0;

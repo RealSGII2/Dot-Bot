@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 
 <head>
@@ -19,6 +19,21 @@
         <a class="dismiss">🗙</a>
     </div>
     <script src="_framework/blazor.webassembly.js"></script>
+    <script>
+        const onChange = (o) => {
+            const isDark = o.currentTarget.matches;
+            if (isDark) document.body.classList.add("dark");
+            else document.body.classList.remove("dark");
+        };
+
+        const media = window.matchMedia("(prefers-color-scheme: dark)");
+        media.addEventListener("change", onChange);
+
+        onChange({
+            currentTarget: media
+        });
+
+    </script>
 </body>
 
 </html>

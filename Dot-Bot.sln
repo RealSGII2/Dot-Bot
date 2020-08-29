@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30413.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dot-Bot.Server", "Dot-Bot\Server\Dot-Bot.Server.csproj", "{98AD607C-1302-4626-8251-BED88800F972}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dot-Bot.Server", "Dot-Bot\Server\Dot-Bot.Server.csproj", "{98AD607C-1302-4626-8251-BED88800F972}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dot-Bot.Client", "Dot-Bot\Client\Dot-Bot.Client.csproj", "{2EF74D82-210B-42F7-9355-79638E17FE84}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dot-Bot.Client", "Dot-Bot\Client\Dot-Bot.Client.csproj", "{2EF74D82-210B-42F7-9355-79638E17FE84}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dot-Bot.Shared", "Dot-Bot\Shared\Dot-Bot.Shared.csproj", "{5FF869E6-4348-4455-AF36-408DE452E636}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dot-Bot.Shared", "Dot-Bot\Shared\Dot-Bot.Shared.csproj", "{5FF869E6-4348-4455-AF36-408DE452E636}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

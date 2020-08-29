@@ -1,0 +1,71 @@
+﻿@page "/leaderboard/{guildID}"
+@using System.Net.Http
+@inject HttpClient Http
+@inject IJSRuntime jsRuntime
+@using DotBot.Shared
+
+<div class="container">
+    @if (guild != null)
+    {
+        <div class="leaderTitle">
+            @if (guild.IconURL != null && guild.IconURL != "")
+            {
+                <img class="icon" src="@guild.IconURL">
+            }
+
+            @guild.Name
+
+            <div class="spacer"></div>
+
+            @if (guild.Invite != null && guild.Invite != "")
+            {
+                <button class="button" @onclick="inviteToGuild">
+                    Join
+                </button>
+            }
+        </div>
+        <div class="leaderCard">
+            <div class="empty" style="text-align: center; opacity: 0.7; margin: 4rem 0;">
+                It seems like nobody is ranked yet.<br />
+                Once somebody sends some messages, they'll appear here.
+            </div>
+
+            @for (int i = 0; i < guild.Users.Count(); i++)
+            {
+                <div class="leaderItem">
+                    <span class="rank">@i</span>
+                    <img class="avatar" src="@guild.Users.ElementAt(i).AvatarURL" />
+                    <span class="username">@guild.Users.ElementAt(i).DisplayName</span>
+                    <span class="spacer"></span>
+                    <div class="end">
+                        <div class="info">
+                            <span class="label">@guild.Users.ElementAt(i).EXPInfo.EXP xp</span>
+                            <span class="label">level @guild.Users.ElementAt(i).EXPInfo.Level</span>
+                        </div>
+                        @*TODO: Make the --value property the percentage to next level*@
+                        <div class="progress" style="@(($"--value: %"))">
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>
+
+@code {
+    [Parameter]
+    public string guildID { get; set; }
+
+    BasicGuildInfo guild;
+
+    protected override async Task OnInitializedAsync() =>
+        guild = await Http.GetFromJsonAsync<BasicGuildInfo>($"Guilds/{guildID}");
+
+    public async Task inviteToGuild()
+    {
+        if (guild.Invite != null && guild.Invite != "")
+        {
+            await jsRuntime.InvokeAsync<object>("open", guild.Invite, "_blank");
+        }
+    }
+}

@@ -18,7 +18,7 @@ namespace DotBot.Server.Bot
         [Command("withlevel")]
         public async Task WithLevel(ushort level)
         {
-            await ReplyAsync($"You should need {EXPManager.levelRequirements[level]} EXP for level {level}");
+            await ReplyAsync($"You should need {DataManager.levelRequirements[level]} EXP for level {level}");
         }
 
         [Command("ListLevels")]
@@ -27,7 +27,7 @@ namespace DotBot.Server.Bot
             var embed = new EmbedBuilder();
             for (int i = 0; i < 5; i++)
             {
-                embed.AddField("Level " + i, EXPManager.levelRequirements[i]);
+                embed.AddField("Level " + i, DataManager.levelRequirements[i]);
             }
             embed.WithTitle("EXP requirements");
             await ReplyAsync(embed: embed.Build());
