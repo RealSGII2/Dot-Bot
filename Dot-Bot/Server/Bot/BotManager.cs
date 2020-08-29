@@ -33,6 +33,7 @@ namespace DotBot.Server.Bot
             };
             CommandService service = new CommandService(serviceConfig);
             CommandHandler handler = new CommandHandler(client, service);
+            EXPManager XPManager = new EXPManager(client);
             await handler.InstallCommandsAsync();
 
             await client.LoginAsync(TokenType.Bot, HiddenInfo.mainToken);
