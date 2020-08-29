@@ -40,6 +40,7 @@ namespace DotBot.Server.Bot
                 }
             }
             lastMessages[message.Author.Id] = message.Timestamp.UtcDateTime;
+            await EXPManager.AddEXP(context);
         }
     }
 }

@@ -8,6 +8,6 @@ namespace DotBot.Shared
     {
         public ulong EXP { get; set; }
         public ushort MessageCount { get; set; }
-        public int Level { get; set; }
+        public byte Level { get; set; }
     }
 }

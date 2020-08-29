@@ -1,5 +1,6 @@
 ﻿using Discord;
 using Discord.Commands;
+using DotBot.Shared;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,6 +32,22 @@ namespace DotBot.Server.Bot
             }
             embed.WithTitle("EXP requirements");
             await ReplyAsync(embed: embed.Build());
+        }
+
+        [Command("Myexp")]
+        [RequireContext(ContextType.Guild)]
+        public async Task ListEXP()
+        {
+            var collection = EXPManager.EXPDataBase.GetCollection<UserEXP>(Context.Guild.Id.ToLetters());
+            var user = collection.FindById(Context.User.Id);
+
+            if (user == null)
+            {
+                await ReplyAsync("You have no data");
+                return;
+            }
+
+            await ReplyAsync($"You are level {user.Level} with {user.EXP} XP and {EXPManager.levelRequirements[user.Level + 1] - user.EXP} XP needed to level up!");
         }
     }
 }
