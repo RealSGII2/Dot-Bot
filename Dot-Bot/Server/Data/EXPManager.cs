@@ -41,6 +41,7 @@ namespace DotBot.Server
             var user = collection.FindById(context.User.Id) ?? new UserEXP();
 
             user.EXP += 20;
+            user.MessageCount++;
             if (user.EXP >= levelRequirements[user.Level + 1])
             {
                 user.Level++;
@@ -49,8 +50,6 @@ namespace DotBot.Server
 
             collection.Upsert(context.User.Id, user);
         }
-
-
     }
 
     public static class Converter
