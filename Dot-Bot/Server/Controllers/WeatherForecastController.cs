@@ -1,4 +1,4 @@
-﻿using Dot_Bot.Shared;
+﻿using DotBot.Shared;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace Dot_Bot.Server.Controllers
+namespace DotBot.Server.Controllers
 {
     [ApiController]
     [Route("[controller]")]

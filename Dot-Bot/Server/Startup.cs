@@ -7,7 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Linq;
 
-namespace Dot_Bot.Server
+namespace DotBot.Server
 {
     public class Startup
     {

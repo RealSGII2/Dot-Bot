@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Dot_Bot.Shared
+namespace DotBot.Shared
 {
     public class WeatherForecast
     {
