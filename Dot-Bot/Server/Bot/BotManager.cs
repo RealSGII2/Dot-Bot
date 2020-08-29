@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Discord.WebSocket;
 using Discord;
+using Discord.Commands;
 
 namespace DotBot.Server.Bot
 {
@@ -25,6 +26,15 @@ namespace DotBot.Server.Bot
             client.Ready += Ready;
             client.Log += Log;
             MessageHandler messageHandler = new MessageHandler(client);
+            var serviceConfig = new CommandServiceConfig
+            {
+                DefaultRunMode = RunMode.Async,
+                IgnoreExtraArgs = true
+            };
+            CommandService service = new CommandService(serviceConfig);
+            CommandHandler handler = new CommandHandler(client, service);
+            await handler.InstallCommandsAsync();
+
             await client.LoginAsync(TokenType.Bot, HiddenInfo.mainToken);
             await client.StartAsync();
         }

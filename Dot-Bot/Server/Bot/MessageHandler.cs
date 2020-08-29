@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Collections.Concurrent;
 using Discord.WebSocket;
 using Discord.Commands;
+using LiteDB;
 
 namespace DotBot.Server.Bot
 {
@@ -17,6 +18,7 @@ namespace DotBot.Server.Bot
         {
             _client = client;
             _client.MessageReceived += HandleMessage;
+
         }
 
         public async Task HandleMessage(SocketMessage msg) => await Task.Run(() => CheckMessage(msg as SocketUserMessage));
@@ -38,8 +40,6 @@ namespace DotBot.Server.Bot
                 }
             }
             lastMessages[message.Author.Id] = message.Timestamp.UtcDateTime;
-
-            await context.Channel.SendMessageAsync("You have gotten EXP");
         }
     }
 }
